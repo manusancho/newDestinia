@@ -4,7 +4,7 @@ import os, csv
 
 from solo.models import SingletonModel
 
-from backend.utils import ftp
+from backend.utils import download
 from backend.apps.siteConfiguration.models import *
 from backend.apps.hotels.models import *
 
@@ -101,7 +101,7 @@ class Giata(SingletonModel):
     # Private methods
     def __download_file(self, type):
 
-        return ftp.download_ftp_file(
+        return download.ftp_file(
             self.ftp_server,
             self.ftp_user,
             self.ftp_password,
@@ -204,6 +204,22 @@ class Giata(SingletonModel):
                 # TODO: log error
                 return result
         return True
+
+    def update_airports(self):
+        """
+        if self.filename_uri_hotels_enable:
+            result = self.__download_file(https://sourceforge.net/p/openflights/code/HEAD/tree/openflights/data/airports.dat?format=raw)
+            if result is not True:
+                # TODO: log error
+                return result
+
+            result = self.parse_hotels()
+            if result is not True:
+                # TODO: log error
+                return result
+        """
+        return True
+
 
     def parse_hotels(self):
 
@@ -460,7 +476,7 @@ class Giata(SingletonModel):
 
                 try:
                     airport, created = City.objects.get_or_create(
-                        airport_code=airport_code,
+                        code=airport_code,
                     )
                     if created:
                         #print "Added airport %s" % airport_code

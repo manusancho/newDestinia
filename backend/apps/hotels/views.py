@@ -23,3 +23,6 @@ def hotels(request):
     response_data = serializers.serialize("json", Hotel.objects.all())
     return HttpResponse(response_data, content_type="application/json")
 
+def airports(request):
+    response_data = serializers.serialize("json", Airport.objects.all())
+    return HttpResponse(response_data, content_type="application/json")

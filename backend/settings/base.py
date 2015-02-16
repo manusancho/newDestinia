@@ -27,6 +27,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +41,7 @@ INSTALLED_APPS = (
     'backend.apps.offers',
     'backend.apps.providers',
     'backend.apps.giata',
+    'backend.apps.openFlights',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,6 +51,11 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.request",
+    'django.contrib.auth.context_processors.auth',
 )
 
 ROOT_URLCONF = 'backend.urls'
@@ -83,7 +90,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-
 # STATIC FILES (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
@@ -93,17 +99,17 @@ STATICFILES_DIRS = (
 )
 
 # Absolute path to the directory where static files should be collected
-# Web server is serving files from this location
-STATIC_ROOT = "public/static"
+# Web server is serving files
+# from this location
+STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, "public/static"))
 
 # URL prefix for static files
 STATIC_URL = "/public/static/"
 
 
-
 # TEMPLATES
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, "public/"),
+    os.path.join(BASE_DIR, "public/static/templates/admin"),
     os.path.join(BASE_DIR, "backend/apps/hotels/tpl/"),
     os.path.join(BASE_DIR, "backend/apps/offers/tpl/"),
 )

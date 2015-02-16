@@ -4,8 +4,17 @@ from datetime import datetime
 
 # Auxiliary classes
 class Airport(models.Model):
-    code = models.CharField(max_length=3, unique=True)
-    name = models.CharField(max_length=100)
+    code_iata = models.CharField(
+        max_length=3,
+        blank=True
+        )
+    code_icao = models.CharField(
+        max_length=4,
+        blank=True,
+        )
+    name = models.CharField(
+        max_length=100
+    )
     latitude = models.FloatField('Latitude',
                                  blank=True,
                                  null=True)
@@ -13,11 +22,15 @@ class Airport(models.Model):
                                   blank=True,
                                   null=True)
 
+
+    def __unicode__(self):
+        return u'%s-%s' % (self.code_iata, self.name)
+
     def __str__(self):
-        return '%s-%s' % (self.code, self.name)
+        return '%s-%s' % (self.code_iata, self.name)
 
     class Meta:
-        ordering = ['code']
+        ordering = ['code_iata']
 
     class Admin:
         pass

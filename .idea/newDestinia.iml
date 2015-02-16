@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/_old" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/apps/openFlights/migrations" />
       <excludeFolder url="file://$MODULE_DIR$/files" />
       <excludeFolder url="file://$MODULE_DIR$/public" />
     </content>
