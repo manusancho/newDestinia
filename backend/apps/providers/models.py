@@ -1,9 +1,13 @@
 from datetime import datetime
+from os.path import *
 
 from django.db import models
 from django.contrib import admin
 
 class Provider(models.Model):
+
+
+
     machine_name = models.CharField(
         'Machine name',
         max_length=10,

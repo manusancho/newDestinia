@@ -4,7 +4,15 @@ from datetime import datetime
 import ftplib
 import urllib
 
-def ftp_file(server, username, password, filepath, downloadFolder, force_download=False):
+def ftp_file(**kargs):
+
+    # Map arguments
+    server = kargs['server']
+    username = kargs['username']
+    password = kargs['password']
+    filepath = kargs['filepath']
+    downloadFolder = kargs['downloadFolder']
+    force_download = kargs['force_download']
 
     if '/' in filepath:
         ftp_path = os.path.dirname(filepath)

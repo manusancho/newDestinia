@@ -1,0 +1,8 @@
+[Core]
+Name = Jumbo Tours
+Module = jbol
+
+[Documentation]
+Author = Manuel SANCHO
+Version = 0.1
+Website = http://www.jumbotours.es

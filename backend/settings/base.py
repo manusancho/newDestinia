@@ -27,7 +27,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -35,6 +34,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'solo',
+    'yapsy',
     'backend.apps.siteConfiguration',
     'backend.utils',
     'backend.apps.hotels',

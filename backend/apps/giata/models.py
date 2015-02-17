@@ -102,12 +102,13 @@ class Giata(SingletonModel):
     def __download_file(self, type):
 
         return download.ftp_file(
-            self.ftp_server,
-            self.ftp_user,
-            self.ftp_password,
-            self.__get_remote_uri(type),
-            self.__get_download_path(),
-            )
+            server=self.ftp_server,
+            username=self.ftp_user,
+            password=self.ftp_password,
+            filepath=self.__get_remote_uri(type),
+            downloadFolder=self.__get_download_path(),
+            force_download=False,
+        )
 
     def __get_remote_uri(self, type):
 
@@ -376,12 +377,12 @@ class Giata(SingletonModel):
         for row in reader:
 
             city_id = row[0]
-            city_name = row[1]
+            city_name = row[1].decode('cp1252')
             destination_id = row[2]
 
             try:
-                destination, created = Destination.objects.update_or_create(
-                    destination_id=destination_id,
+                destination, created = Destination.objects.get_or_create(
+                    id=destination_id,
                 )
                 if created:
                     print "Added destination with id %s" % destination_id
@@ -392,10 +393,12 @@ class Giata(SingletonModel):
 
             try:
                 city, created = City.objects.update_or_create(
-                    city_id=city_id,
+                    id=city_id,
+                    name_de=city_name,
+                    destination=destination,
                 )
                 if created:
-                    print "Added city %s" % city_name
+                    #print "Added city %s" % city_name
                     created_cities += 1
 
             except Exception, e:

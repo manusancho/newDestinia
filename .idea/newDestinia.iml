@@ -7,7 +7,7 @@
       <excludeFolder url="file://$MODULE_DIR$/files" />
       <excludeFolder url="file://$MODULE_DIR$/public" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 2.7.6 virtualenv at ~/Sites/DESTINIA/www/newDestinia/venv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

@@ -1,6 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 import os
+from django.http import HttpResponse
 
 from backend.apps.giata.models import *
 
@@ -10,7 +9,6 @@ def giata_update_all(request):
     giata = Giata.get_solo()
 
     # Update countries
-    return HttpResponse("all", content_type="application/json")
     result = giata.update_countries()
     if result is False:
         # TODO: log error
@@ -39,7 +37,6 @@ def giata_update_all(request):
 
 def giata_update_countries(request):
 
-    return HttpResponse("cuntries", content_type="application/json")
     giata = Giata.get_solo()
 
     # Update countries
@@ -50,7 +47,6 @@ def giata_update_countries(request):
 
 def giata_update_destinations(request):
 
-    return HttpResponse("dest", content_type="application/json")
     giata = Giata.get_solo()
 
     # Update destinations
@@ -61,7 +57,6 @@ def giata_update_destinations(request):
 
 def giata_update_cities(request):
 
-    return HttpResponse("cit", content_type="application/json")
     giata = Giata.get_solo()
 
     # Update cities
@@ -71,9 +66,6 @@ def giata_update_cities(request):
 
 
 def giata_update_hotels(request):
-
-    return HttpResponse("hotels", content_type="application/json")
-    giata = Giata.get_solo()
 
     # Update hotels
     result = giata.update_hotels()
